@@ -7,7 +7,7 @@
 Summary:	A Python module for decorators, wrappers and monkey patching
 Name:		python-%{module}
 Version:	1.10.5
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/w/wrapt/%{module}-%{version}.tar.gz
