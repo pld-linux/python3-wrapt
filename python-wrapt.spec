@@ -6,12 +6,12 @@
 %define 	module	wrapt
 Summary:	A Python module for decorators, wrappers and monkey patching
 Name:		python-%{module}
-Version:	1.10.5
-Release:	3
+Version:	1.11.2
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/w/wrapt/%{module}-%{version}.tar.gz
-# Source0-md5:	79732bbc096235704e7523d3bacd202c
+# Source0-md5:	cc15c001b129f81eb2f79b15eb99ffe5
 URL:		https://github.com/GrahamDumpleton/wrapt
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -84,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc README.rst
 %dir %{py_sitedir}/%{module}
 %{py_sitedir}/%{module}/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/*.so
@@ -94,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc README
+%doc README.rst
 %dir %{py3_sitedir}/%{module}
 %{py3_sitedir}/%{module}/*.py
 %attr(755,root,root) %{py3_sitedir}/%{module}/*.so
