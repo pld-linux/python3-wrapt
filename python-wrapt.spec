@@ -8,7 +8,7 @@ Summary:	Python 2 module for decorators, wrappers and monkey patching
 Summary(pl.UTF-8):	Moduł Pythona 2 do dekorowania, opakowywania i łatania w locie
 Name:		python-%{module}
 Version:	1.12.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/wrapt/
