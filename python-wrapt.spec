@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	tests	# unit tests
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
@@ -7,21 +8,24 @@
 Summary:	Python 2 module for decorators, wrappers and monkey patching
 Summary(pl.UTF-8):	Moduł Pythona 2 do dekorowania, opakowywania i łatania w locie
 Name:		python-%{module}
-Version:	1.12.1
-Release:	3
+# keep version compatible with python3-astroid.spec (2.9.x wants <1.14.0)
+Version:	1.13.3
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/wrapt/
 Source0:	https://files.pythonhosted.org/packages/source/w/wrapt/%{module}-%{version}.tar.gz
-# Source0-md5:	6d56ed0de4336462a73350341462f45e
+# Source0-md5:	50efce974cc8a0d39fd274d74eb0fd1e
 URL:		https://github.com/GrahamDumpleton/wrapt
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
+BuildRequires:	python-setuptools >= 1:38.3.0
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel >= 1:3.4
+BuildRequires:	python3-devel >= 1:3.5
+BuildRequires:	python3-setuptools >= 1:38.3.0
 %endif
 Requires:	python-modules >= 1:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,7 +58,7 @@ bardziej przewidywalne i spójne zachowanie.
 Summary:	Python 3 module for decorators, wrappers and monkey patching
 Summary(pl.UTF-8):	Moduł Pythona 3 do dekorowania, opakowywania i łatania w locie
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:3.4
+Requires:	python3-modules >= 1:3.5
 
 %description -n python3-%{module}
 The aim of the wrapt module is to provide a transparent object proxy
@@ -86,10 +90,20 @@ bardziej przewidywalne i spójne zachowanie.
 %build
 %if %{with python2}
 %py_build
+
+%if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+%{__python} -m pytest tests
+%endif
 %endif
 
 %if %{with python3}
 %py3_build
+
+%if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+%{__python3} -m pytest tests
+%endif
 %endif
 
 %install
