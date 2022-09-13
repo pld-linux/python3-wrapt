@@ -93,6 +93,7 @@ bardziej przewidywalne i spójne zachowanie.
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTHONPATH=$(echo $(pwd)/build-2/lib.*) \
 %{__python} -m pytest tests
 %endif
 %endif
@@ -102,6 +103,7 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTHONPATH=$(echo $(pwd)/build-3/lib.*) \
 %{__python3} -m pytest tests
 %endif
 %endif
