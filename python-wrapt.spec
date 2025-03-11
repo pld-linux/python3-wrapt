@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Moduł Pythona 2 do dekorowania, opakowywania i łatania w lo
 Name:		python-%{module}
 # keep version compatible with python3-astroid.spec (2.9.x wants <1.14.0)
 Version:	1.13.3
-Release:	4
+Release:	5
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/wrapt/
